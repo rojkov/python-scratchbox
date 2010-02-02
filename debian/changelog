@@ -1,3 +1,9 @@
+python-scratchbox (0.0.3) unstable; urgency=low
+
+  * Applied vasily changes ticket: 121701
+
+ -- Ugandhar Reddy <ugandhar.reddy@nokia.com>  Tue, 02 Feb 2010 17:58:23 +0200
+
 python-scratchbox (0.0.2) unstable; urgency=low
 
   * splitted to common, sb1 and sb2
