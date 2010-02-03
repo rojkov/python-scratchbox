@@ -242,7 +242,7 @@ class Scratchbox2(Scratchbox):
            target_params["cpuemulator"] != "none":
             cmdl += "-c %s%s " % (self.tools_rootstrap.get_tools_dir(), target_params["cpuemulator"])
 
-        cmdl += self.target_name + " "
+        cmdl += self.rootstrap_dir + " "
         if "compiler" in target_params and target_params["compiler"]:
             cmdl += target_params["compiler"]
 

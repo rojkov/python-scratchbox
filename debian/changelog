@@ -1,3 +1,9 @@
+python-scratchbox (0.0.4) unstable; urgency=low
+
+  * added forgotten change from DP team
+
+ -- Ed Bartosh <eduard.bartosh@nokia.com>  Wed,  3 Feb 2010 18:33:07 +0200
+
 python-scratchbox (0.0.3) unstable; urgency=low
 
   * Applied vasily changes ticket: 121701
