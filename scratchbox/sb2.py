@@ -239,7 +239,13 @@ class Scratchbox2(Scratchbox):
             cmdl += "-c %s " % target_params["cputransp"]
         elif "cpuemulator" in target_params and \
            target_params["cpuemulator"] != "none":
-            cmdl += "-c %s " % target_params["cpuemulator"]
+            if "use_host_cpuemulator" in target_params and \
+                   target_params["use_host_cpuemulator"] != "No":
+                cmdl += "-c %s " % target_params["cpuemulator"]
+            else:
+                cmdl += "-c %s " % os.path.join(
+                    self.tools_rootstrap.get_tools_dir(),
+                    target_params["cpuemulator"])
 
         cmdl += self.target_name + " "
         if "compiler" in target_params and target_params["compiler"]:

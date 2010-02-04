@@ -1,3 +1,9 @@
+python-scratchbox (0.0.6) unstable; urgency=low
+
+  * implemented processing of "use_host_cpuemulator"
+
+ -- Ed Bartosh <eduard.bartosh@nokia.com>  Thu,  4 Feb 2010 14:17:48 +0200
+
 python-scratchbox (0.0.5) unstable; urgency=low
 
   * Fixed hacks from DP
