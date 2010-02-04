@@ -376,8 +376,7 @@ class Scratchbox2(Scratchbox):
     def extract_rootstrap(self, rootstrap):
         """Extracts given local rootstrap into target."""
 
-        output = run_command("mkdir %s" % (self.get_targetdir(
-            self.target_name)))
+        os.makedirs(self.get_targetdir(self.target_name))
         cmd = "tar zxf %s" % rootstrap
         self.logger.debug("Executing the command: %s" % cmd)
         output = run_command(cmd, self.get_targetdir(self.target_name))
