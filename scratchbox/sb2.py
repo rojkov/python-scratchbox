@@ -209,7 +209,6 @@ class Scratchbox2(Scratchbox):
     dotdir = ".sb2-templates"
     sbdotdir = ".scratchbox2"
     sb2config = "/usr/bin/sb2-config"
-    rootstrap_dir = "rootstrap"
 
     def __init__(self, target_name=""):
         Scratchbox.__init__(self, target_name)
@@ -240,10 +239,9 @@ class Scratchbox2(Scratchbox):
             cmdl += "-c %s " % target_params["cputransp"]
         elif "cpuemulator" in target_params and \
            target_params["cpuemulator"] != "none":
-            cmdl += "-c %s%s " % (self.tools_rootstrap.get_tools_dir(),
-                                  target_params["cpuemulator"])
+            cmdl += "-c %s " % target_params["cpuemulator"]
 
-        cmdl += self.rootstrap_dir + " "
+        cmdl += self.target_name + " "
         if "compiler" in target_params and target_params["compiler"]:
             cmdl += target_params["compiler"]
 
@@ -294,7 +292,7 @@ class Scratchbox2(Scratchbox):
     def select(self, tname):
         """Make target default."""
         self.target_name = tname
-        return self.run("-d %s" % self.rootstrap_dir, self.get_targetdir(tname),
+        return self.run("-d %s" % tname, self.get_targetdir(tname),
                         self.sb2config)
 
     def tee(self, command, logfn, mode, bufsize=0):
@@ -339,25 +337,23 @@ class Scratchbox2(Scratchbox):
         """Returns absolute path to scratchbox target."""
         if not target_name:
             target_name = self.target_name
-        return os.path.join(self.get_basedir(), self.dotdir, target_name,
-                            self.rootstrap_dir)
+        return os.path.join(self.get_basedir(), self.dotdir, target_name)
 
     def get_homedir(self):
         """Returns absolute path to directory where build is done."""
-        return os.path.join(self.get_basedir(), self.dotdir, self.target_name)
+        return os.path.join(self.get_basedir(), self.dotdir)
 
     def get_tmpdir(self):
         """Returns absolute path to scratchbox temporary directory."""
-        return os.path.join(self.get_basedir(), self.dotdir,
-                            self.target_name)
+        return os.path.join(self.get_homedir(), 'tmp')
 
     def get_sb_tmpdir(self):
         """Returns path to temporary directory inside scratchbox."""
-        return os.path.join(self.get_basedir(), self.dotdir, self.target_name)
+        return self.get_tmpdir()
 
     def get_sb_homedir(self):
         """Returns path to directory inside scratchbox where build is done."""
-        return os.path.join(self.get_basedir(), self.dotdir, self.target_name)
+        return self.get_homedir()
 
     def get_superuser_cmd(self):
         """Returns superuser command used inside scratchbox."""
