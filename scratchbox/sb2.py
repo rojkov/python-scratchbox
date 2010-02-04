@@ -240,7 +240,8 @@ class Scratchbox2(Scratchbox):
             cmdl += "-c %s " % target_params["cputransp"]
         elif "cpuemulator" in target_params and \
            target_params["cpuemulator"] != "none":
-            cmdl += "-c %s%s " % (self.tools_rootstrap.get_tools_dir(), target_params["cpuemulator"])
+            cmdl += "-c %s%s " % (self.tools_rootstrap.get_tools_dir(),
+                                  target_params["cpuemulator"])
 
         cmdl += self.rootstrap_dir + " "
         if "compiler" in target_params and target_params["compiler"]:
@@ -338,7 +339,8 @@ class Scratchbox2(Scratchbox):
         """Returns absolute path to scratchbox target."""
         if not target_name:
             target_name = self.target_name
-        return os.path.join(self.get_basedir(), self.dotdir, target_name, self.rootstrap_dir)
+        return os.path.join(self.get_basedir(), self.dotdir, target_name,
+                            self.rootstrap_dir)
 
     def get_homedir(self):
         """Returns absolute path to directory where build is done."""
@@ -374,7 +376,8 @@ class Scratchbox2(Scratchbox):
     def extract_rootstrap(self, rootstrap):
         """Extracts given local rootstrap into target."""
 
-        output = run_command("mkdir %s" % (self.get_targetdir(self.target_name)))
+        output = run_command("mkdir %s" % (self.get_targetdir(
+            self.target_name)))
         cmd = "tar zxf %s" % rootstrap
         self.logger.debug("Executing the command: %s" % cmd)
         output = run_command(cmd, self.get_targetdir(self.target_name))
@@ -392,4 +395,5 @@ class Scratchbox2(Scratchbox):
         self.target_params = params
         self.logger.debug("No need to create target. In SB2 target is "\
                           "initialised after rootstrap is unpacked.")
+
 
