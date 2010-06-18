@@ -1,3 +1,9 @@
+python-scratchbox (0.0.7+squeeze1) unstable; urgency=low
+
+  * Increased debhelper compatibility level up to 7
+
+ -- Dmitry Rozhkov <dmitry.rozhkov@nokia.com>  Fri, 18 Jun 2010 18:05:12 +0300
+
 python-scratchbox (0.0.7) unstable; urgency=low
 
   * added lazy creation of tmp directory

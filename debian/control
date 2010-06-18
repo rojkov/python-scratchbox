@@ -2,9 +2,9 @@ Source: python-scratchbox
 Section: python
 Priority: optional
 Maintainer: Ed Bartosh <bartosh@gmail.com>
-Build-Depends: debhelper (>= 4.1.25), python-central, python-setuptools
+Build-Depends: debhelper (>= 7), python-support
 XS-Python-Version: all
-Standards-Version: 3.8.0
+Standards-Version: 3.8.4
 
 Package: python-scratchbox
 Architecture: all
