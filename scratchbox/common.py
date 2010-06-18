@@ -101,7 +101,9 @@ class Scratchbox(object):
 
         self.logger.debug("_tee: running %s %s log: %s" % \
                 (self.exe, command, logfn))
-        pipe = subprocess.Popen([self.exe, command], stdout=subprocess.PIPE)
+        pipe = subprocess.Popen([self.exe, command],
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.STDOUT)
         logfd = open(logfn, "w", bufsize)
 
         while True:
