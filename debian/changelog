@@ -1,3 +1,9 @@
+python-scratchbox (0.0.7+squeeze2) unstable; urgency=low
+
+  * Replace deprecated popen2 with subprocess module
+
+ -- Dmitry Rozhkov <dmitry.rozhkov@nokia.com>  Fri, 18 Jun 2010 20:14:16 +0300
+
 python-scratchbox (0.0.7+squeeze1) unstable; urgency=low
 
   * Increased debhelper compatibility level up to 7

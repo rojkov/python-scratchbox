@@ -26,7 +26,7 @@ Scratchbox API. Common classes.
 """
 
 import os
-import popen2
+import subprocess
 import signal
 import pwd
 import logging
@@ -101,18 +101,16 @@ class Scratchbox(object):
 
         self.logger.debug("_tee: running %s %s log: %s" % \
                 (self.exe, command, logfn))
-        pipe = popen2.Popen4("%s %s </dev/null" % (self.exe, command))
+        pipe = subprocess.Popen([self.exe, command], stdout=subprocess.PIPE)
         logfd = open(logfn, "w", bufsize)
 
-        pipe.tochild.close()
-
         while True:
-            line = pipe.fromchild.readline()
+            line = pipe.stdout.readline()
             if not line:
                 break
             logfd.write(line)
 
-        pipe.fromchild.close()
+        pipe.stdout.close()
         logfd.close()
 
         status = pipe.wait()
